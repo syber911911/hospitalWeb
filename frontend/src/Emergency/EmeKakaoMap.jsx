@@ -92,7 +92,7 @@ function KakaoMap(props){
 
     // 내 위치 찾아주는 함수
     function mapReset(latitude, longitude){
-        axios.get(`http://127.0.0.1:8000/test/${latitude}/${longitude}`)
+        axios.get(`https://back.jintam.site/test/${latitude}/${longitude}`)
         // axios.get(`http://127.0.0.1:8000/test/${36.77556877677842}/${126.46515725738562}`)
         .then(res => {
             console.log(res.data);

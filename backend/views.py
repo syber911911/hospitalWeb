@@ -16,20 +16,7 @@ from django.conf import settings
 
 #추가할 기능
 #업데이트주기
-#응급실운영하는 곳의 기관명과 좌표를 넘겨줌
-class ReactAppView(View):
-    def get(self, request):
-        try:
-            with open(os.path.join(str(settings.BASE_DIR),'backend', 'templates', 'backend', 'index.html')) as file:
-                return HttpResponse(file.read())
-        except:
-            return HttpResponse(
-                """
-            index.html not found ! build your React app !!
-            """,
-                status=501,
-            )
-    
+#응급실운영하는 곳의 기관명과 좌표를 넘겨줌 
 class locationList(APIView):
     def get(self, request):
         tests = normalH.objects.filter(응급실운영여부 = "True",)

@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'backend',
     'corsheaders',
     'rest_framework',
-    'webpack_loader',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -72,7 +71,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'backend/templates/backend'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
