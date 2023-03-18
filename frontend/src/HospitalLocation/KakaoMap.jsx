@@ -231,16 +231,6 @@ function KakaoMap(props){
                     ? (<Spinner/>)
                     : null
                 }
-                <div className="btn">
-                    <button className="mapSize"
-                    onClick={
-                        () => {
-                            let mapSize = document.getElementById('map');
-                            mapSize.classList.toggle('mapSize');
-                        }
-                    }
-                    >지도 크기 변경</button>
-                </div>
                 <div className="hAddr">
                     <span className="title">내 위치</span>
                     <span id="centerAddr"/>

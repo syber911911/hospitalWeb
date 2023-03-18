@@ -6,8 +6,9 @@ from django.http import Http404
 from django.views.generic import TemplateView
 
 from .serializers import normalHSerializer,emerHSerializer
-from .models import normalH
+from .models import normalH, aedLocation
 from .emerH import check_ID, update_hospitalization, search_Emergency
+from .aed import search_aed
 from django.views.generic import View
 import os
 from django.http import HttpResponse
@@ -44,3 +45,8 @@ class hospitalDetail(APIView):
         list = self.get_objects(pk)
         serializer = normalHSerializer(list, many=True)
         return Response(serializer.data)
+
+class SearchAed(APIView):
+    def get(self, request, lon, lat, format=None):
+        data = search_aed(lon=lon, lat=lat)
+        return Response(data)

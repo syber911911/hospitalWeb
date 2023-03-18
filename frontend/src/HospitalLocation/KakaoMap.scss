@@ -6,29 +6,6 @@
     border-radius: 10px;
     border: 2px solid rgb(216, 216, 216);
     margin-bottom: 10px;
-    .btn{
-        position: absolute;
-        cursor: pointer;
-        bottom: 0;
-        right: 0;
-        z-index: 10;
-        button{
-            width: 75px;
-            height: 35px;
-            font-size: 15px;
-            font-weight: 700;
-            border-radius: 10px;
-            border: 0;
-            background-color:antiquewhite;
-        }
-        button:nth-child(2){
-            font-size: 10px;
-        }
-        .mapSize{
-            font-size: 10px;
-            font-weight: 900;
-        }
-    }
     .hAddr{
         position: absolute;
         z-index: 10;

@@ -1,7 +1,6 @@
 .contain{
     position: relative;
     width: 100%;
-    z-index: 1;
     h1, h2{
         font-weight: 700;
     }
@@ -30,6 +29,13 @@
         .spinner{
             margin-top: 100px;
         }
+    }
+    @media screen and (max-width: 1000px){
+	    .settings{
+		    .list{
+			    margin-top: 15%;
+		    }
+	    }
     }
     @media screen and (max-width: 800px){
         .settings{

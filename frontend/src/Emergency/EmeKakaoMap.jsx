@@ -3,6 +3,7 @@
 
 import axios from 'axios';
 import React, {useState, useEffect, Component} from 'react';
+import markerImg from '../image/marker/heart.png';
 import Spinner from '../Spinner';
 import './EmeKakaoMap.scss'
 
@@ -23,6 +24,10 @@ function KakaoMap(props){
     let mapOption;
     let map;
     let [spinner, spinnerChange] = useState(false);
+
+    let aed;
+    var positions = [];
+    var info = [];
 
     // x축, y축, 제목
     let allLocations = {
@@ -92,12 +97,14 @@ function KakaoMap(props){
 
     // 내 위치 찾아주는 함수
     function mapReset(latitude, longitude){
-        axios.get(`https://back.jintam.site/test/${latitude}/${longitude}`)
+        axios.all([axios.get(`https://back.jintam.site/test/${latitude}/${longitude}`), axios.get(`https://back.jintam.site/aed/${latitude}/${longitude}`)])
         // axios.get(`http://127.0.0.1:8000/test/${36.77556877677842}/${126.46515725738562}`)
-        .then(res => {
-            console.log(res.data);
+        .then(axios.spread((res1, res2) => {
+            console.log(res1.data);
+	    console.log(res2.data);
             // 받아온 객체를 배열로 변환.
-            let hospital = Object.entries(res.data);
+            let hospital = Object.entries(res1.data);
+	    aed = Object.entries(res2.data);
             for(let i = 0; i < hospital.length; i++){
                 // 병원 기본정보
                 dispatch({type: '응급실정보', payload: {
@@ -112,14 +119,54 @@ function KakaoMap(props){
                     emeTel: hospital[i][1].응급실전화, monday: hospital[i][1].월요진료, thusday: hospital[i][1].화요진료,
                     wednesday: hospital[i][1].수요진료, thursday: hospital[i][1].목요진료, friday: hospital[i][1].금요진료,
                     saturday: hospital[i][1].토요진료, sunday: hospital[i][1].일요진료, holiday: hospital[i][1].공휴일진료,
-                    treatment: hospital[i][1].병원분류명, admission: hospital[i][1].입원가능여부
+                    treatment: hospital[i][1].병원분류명, admission: hospital[i][1].입원가능여부,
+		    emeleftover : hospital[i][1].응급실병상, surgeryleftover : hospital[i][1].수술실병상,
+		    hospitalroomleftover : hospital[i][1].입원실병상
                 }})
                 dispatch({type: '응급실위치', payload: {
                     emeX: hospital[i][1].병원위도,
                     emeY: hospital[i][1].병원경도
                 }})
             }
-        })
+	    
+            for (let k = 0; k < aed.length; k++) {
+	    	positions.push({
+			title: aed[k][1].설치장소,
+			latlng: new kakao.maps.LatLng(aed[k][1].경도, aed[k][1].위도)
+		})
+	    }
+
+	    var imageSrc1 = markerImg;
+	    var imageSize = new kakao.maps.Size(24, 24);
+	    var markerImage = new kakao.maps.MarkerImage(imageSrc1, imageSize);
+
+	    function closeinfo() {
+	    	for (var i = 0; i < info.length; i++){
+			info[i].close();
+		}
+	    }
+	    positions.forEach(function (position, idx) {
+		   var latlng = position.latlng;
+
+		    var content = '<div style="padding:5px;text-align: center;width: 150px;height: 30px;font-size:13px;font-weight:700;">'+ position.title +'</div>';
+		    var marker = new kakao.maps.Marker({
+			    map: map,
+			    position: latlng,
+			    image: markerImage
+		    });
+
+		    var infowindow = new kakao.maps.InfoWindow({
+			    content: content,
+			    removable: true
+		    });
+		    info.push(infowindow);
+
+		    kakao.maps.event.addListener(marker, 'click', function () {
+			    closeinfo();
+			    infowindow.open(map, marker, infowindow);
+		    });
+	    });
+	}))
         .catch(err => console.log(err));
         spinnerChange(false);
         mapOption = { 

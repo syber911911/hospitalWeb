@@ -51,6 +51,21 @@ function EmergencyDetail(props){
         }
         return array;
     }
+
+    function NowemeState(){
+	    let array = [];
+	    let NowState = ['응급실 병상 수 : ', '수술실 병상 수 : ', '입원실 병상 수 : '];
+	    let NowStateData = [];
+	    NowStateData.push(
+		    props.emeleftover, props.surgeryleftover, props.hospitalroomleftover
+	    )
+	    for(let i = 0; i < NowState.length; i++){
+		    array.push(
+			    <p className="nowState">{NowState[i]}<span className = "NowStateData_span">{NowStateData[i][props.clickHospital]}{"석 사용가능"}</span></p>
+		    )
+	    }
+	    return array;
+    }
     
     function WeekUI(){
         let array = [];
@@ -113,6 +128,10 @@ function EmergencyDetail(props){
                             {/* <h1 className="emergencyCall">응급실 연락처 : {props.emeTel[props.clickHospital]}</h1> */}
                             <br/>
                             <h1 className="emeState">입원 가능 여부: <span id="emeStateText">{props.admission[props.clickHospital]}</span></h1><br/>
+			    <h1 className="emeState">남은병동수</h1><br/>
+		            <div className="NowemeState">
+				{NowemeState()}
+		            </div><br/>
                             <h1 className="emeLocation">위치: {hospitalAddress}</h1>
                             <EmeMap
                                 emeX = {emeX}

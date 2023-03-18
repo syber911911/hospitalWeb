@@ -80,7 +80,7 @@ function Main(){
                             <button onClick={() => {setHelpState(1)}} class="helpBtn">!</button>
                         </div>
                         <div className='item'>
-                            <p className='title3'>🚨근처 응급실을 찾아봐요!🚨</p>
+                            <p className='title3'>🚨응급실 및 제세동기 위치 찾기!🚨</p>
                             <Link to="/emergency"><button className="emergencyBtn">찾아보기</button></Link>
                             <button onClick={() => {setHelpState(2)}} class="helpBtn">!</button>
                         </div>
@@ -135,7 +135,7 @@ function HelpInformation(props){
                 <br/>
                 <img width="500" alt="image" src="https://user-images.githubusercontent.com/76980526/175319099-ec2acb00-bd8e-4fe7-b5de-29db1af6aab0.png"/>
                 <br/><br/>
-                <p>해당 사이트에 들어가면 내 위치를 찾아준 뒤 반경 11km 이내에 있는 응급실이 있는 병원들을 찾아줍니다.</p>
+                <p>해당 사이트에 들어가면 내 위치를 찾아준 뒤 반경 11km 이내에 있는 응급실 정보와 3km 이내에 있는 AED 위치를 찾아줍니다.</p>
                 <h1>2.</h1>
                 <br/>
                 <img width="500" alt="image" src="https://user-images.githubusercontent.com/76980526/175317999-f7702246-6ced-4e3b-8d16-3145b88657bd.png"/>

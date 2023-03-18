@@ -10,6 +10,7 @@ urlpatterns = [
     path('test/',views.locationList.as_view()),
     path('test/<str:pk>', views.hospitalDetail.as_view()),
     path('test/<str:lon>/<str:lat>', views.searchEmergency.as_view()),
+    path('aed/<str:lon>/<str:lat>', views.SearchAed.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -4,7 +4,7 @@ import {Link, Route, Switch} from 'react-router-dom';
 import './Header.scss';
 
 function Header(){
-    let menuList = ['홈', '내 위치 근처 병원 찾기', '내 주변 응급실 찾기'];
+    let menuList = ['홈', '내 위치 근처 병원 찾기', '내 주변 응급실 및 AED 위치찾기'];
 
     useEffect(() => {
         // 누른 메뉴에 따라서 url 변경.

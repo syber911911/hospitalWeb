@@ -39,6 +39,9 @@ function EmergencyList(){
     let [holiday, setHoliday] = useState([]);
     let [treatment, setTreatment] = useState([]);
     let [admission, setAdmission] = useState([]);
+    let [emeleftover, setemeleftover] = useState([]);
+    let [surgeryleftover, setsurgeryleftover] = useState([]);
+    let [hospitalroomleftover, sethospitalroomleftover] = useState([]);
 
     const history = useHistory();
 
@@ -70,6 +73,10 @@ function EmergencyList(){
                     holiday.push(state[4].holiday[i]);
                     treatment.push(state[4].treatment[i]);
                     admission.push(state[4].admission[i]);
+
+		    emeleftover.push(state[4].emeleftover[i]);
+		    surgeryleftover.push(state[4].surgeryleftover[i]);
+		    hospitalroomleftover.push(state[4].hospitalroomleftover[i]);
                 }
                 setHospitalCount(state[3].emeCount);
                 setEmeinformationState(1);
@@ -151,6 +158,10 @@ function EmergencyList(){
                 holiday = {holiday}
                 treatment = {treatment}
                 admission = {admission}
+
+	        emeleftover = {emeleftover}
+	        surgeryleftover = {surgeryleftover}
+	        hospitalroomleftover = {hospitalroomleftover}
             />
         </>
     )
