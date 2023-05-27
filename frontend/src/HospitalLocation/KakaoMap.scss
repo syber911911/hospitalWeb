@@ -1,0 +1,60 @@
+#map{
+    position: relative;
+    width: 50vw;
+    height: 250px;
+    z-index: 1;
+    border-radius: 10px;
+    border: 2px solid rgb(216, 216, 216);
+    margin-bottom: 10px;
+    .hAddr{
+        position: absolute;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.7);
+        color: #333;
+        .title, #centerAddr{
+            color: #333;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+}
+#map.mapSize{
+    height: 60vh;
+}
+
+// kakaoMap
+.myLocation{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid rgb(201, 201, 201);
+}
+.textBox{
+    width: 50px;
+    height: 25px;
+    background-color: #fff;
+    border: 2px solid rgb(211, 211, 211);
+    border-radius: 20px;
+}
+.myLocationText{
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px){
+    #map{
+        width: 80vw;
+        // left: 0;
+        // right: 0;
+        // margin: auto;
+    }
+}
+@media screen and (max-height: 400px){
+    #map{
+        height: 200px;
+    }
+    #map.mapSize{
+        height: 300px;
+    }
+}

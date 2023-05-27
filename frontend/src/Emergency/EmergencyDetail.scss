@@ -1,0 +1,103 @@
+.hospitalDetail{
+    .firstInformation{
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .back{
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(#000, .3);
+    }
+    .information{
+        overflow-y: scroll;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: 20px auto;
+        width: 90vw;
+        height: 90vh;
+        .close{
+            position: relative;
+            z-index: 1000;
+            right: 5%;
+            padding: 20px;
+            color: #000;
+        }
+        .hospitalDetail{
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            padding: 50px;
+        }
+        .hospitalDetail2{
+            margin-top: 10px;
+            padding: 50px;
+            border-radius: 10px;
+            height: 1200px;
+            background-color: rgb(255, 255, 255);
+	    position: relative;
+            .hospitalModal{
+                position: relative;
+                display: flex;
+                justify-content: space-around;
+                h1{
+                    position: absolute;
+                    left: 0;
+                    font-weight: 900;
+                    cursor: pointer;
+                }
+                li.active{
+                    text-decoration: underline;
+                }
+            }
+            .hospitalDetail2Inner{
+		.nowState{
+		    font-size: 15px;
+	            font-weight: 700; 	    
+		}
+		.NowStateData_span{
+		    color: blue;	
+		}
+                .emeLocation{
+                    margin-bottom: 10px;
+                }
+                .treatmentTime{
+                    margin: 20px 10px 0px;
+                }
+                .weekBox, .diagnosis{
+                    padding: 20px;
+                    border-radius: 10px;
+                    background-color: rgb(244, 238, 238);
+                    font-size: 15px;
+                    font-weight: 700;
+                }
+                .diagnosisBox{
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                .diagnosis{
+                    padding: 14px;
+                    text-align: center;
+                    width: 100px;
+                    height: 50px;
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 800px){
+        .information{
+            .hospitalDetail2{
+                padding: 25px;
+            }
+        }
+    }
+}
